@@ -10,7 +10,7 @@ export const welcomeName = atom({
     key : "name",
     default : savedName === null ? null : regReplace(savedName as any),
 })
-
+    
 interface IToDoState{
     [key : string] : string[];
 }

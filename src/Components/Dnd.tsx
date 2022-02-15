@@ -1,4 +1,4 @@
-import {DragDropContext} from "react-beautiful-dnd"
+import {DragDropContext, DropResult} from "react-beautiful-dnd"
 import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { toDoState, welcomeName } from "../atoms";
@@ -30,8 +30,34 @@ const Boards = styled.div`
 function Dnd() {
     const [list, setList] = useRecoilState(toDoState);
     const userName = useRecoilValue(welcomeName);
-    const onDragEnd = () => {
-
+    const onDragEnd = (data : DropResult) => {
+        if (!data.destination) return;
+        if (data.destination.droppableId === data.source.droppableId){
+            setList(prev => {
+                const copy = [...prev[data.source.droppableId]];
+                const copyObj = copy[data.source.index];
+                copy.splice(data.source.index, 1);
+                copy.splice(data.destination!.index, 0 , copyObj);
+                return{
+                    ...prev,
+                    [data.source.droppableId]: copy,
+                }
+            })
+        }
+        if (data.destination.droppableId !== data.source.droppableId){
+            setList(prev => {
+                const sourceBoard = [...prev[data.source.droppableId]];
+                const dstBoard = [...prev[data.destination!.droppableId]];
+                const copyObj = sourceBoard[data.source.index];
+                sourceBoard.splice(data.source.index, 1);
+                dstBoard.splice(data.destination!.index, 0, copyObj);
+                return {
+                    ...prev,
+                    [data.source.droppableId] : sourceBoard,
+                    [data.destination!.droppableId] : dstBoard,
+                }
+            })
+        }
     }
     return (
         <>
