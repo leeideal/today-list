@@ -13,19 +13,20 @@ const DragItem = styled.div<{isDragging : boolean}>`
 `
 
 interface IDragabbleCardProps {
-    toDo: string;
+    toDoId: number;
     index: number;
+    toDoText : string;
   }
 
-function Drag({toDo, index} : IDragabbleCardProps) {
+function Drag({toDoId, index, toDoText} : IDragabbleCardProps) {
     return (
-        <Draggable draggableId={toDo} index={index}>
+        <Draggable draggableId={toDoText} index={index}>
         {(provided, snapShot) => (
             <DragItem ref={provided.innerRef}
             {...provided.dragHandleProps}
             {...provided.draggableProps}
             isDragging={snapShot.isDragging}>
-            {toDo}
+            {toDoText}
             </DragItem>
         )}
     </Draggable>

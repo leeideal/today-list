@@ -10,17 +10,24 @@ export const welcomeName = atom({
     key : "name",
     default : savedName === null ? null : regReplace(savedName as any),
 })
-    
+
+export interface ITodo{
+    id:number;
+    text:string;
+}
+
 interface IToDoState{
-    [key : string] : string[];
+    [key : string] : ITodo[];
 }
 
 
+const savedToDos = localStorage.getItem("toDos");
+
 export const toDoState = atom<IToDoState>({
     key: "toDo",
-    default: {
-        "To Do": ["a","b","c"],
-        Doing: ["d","e","f","g"],
-        Done: ["h","i"],
-    }
+    default: savedToDos === null ? {
+        "To Do": [],
+        Doing: [],
+        Done: [],
+    } : {...JSON.parse(savedToDos as any)}
 })

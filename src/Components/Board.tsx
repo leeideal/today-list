@@ -1,5 +1,6 @@
 import { Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
+import { ITodo } from "../atoms";
 import Drag from "./Drag";
 
 const BoardWapper = styled.div`
@@ -24,7 +25,7 @@ flex-grow: 1;
 
 
 interface IBoardProps {
-    toDoList : string[];
+    toDoList : ITodo[];
     boardId : string;
 }
 
@@ -36,7 +37,7 @@ function Board({toDoList, boardId} : IBoardProps) {
                 {(provided)=> (
                     <Area ref={provided.innerRef} {...provided.droppableProps}>
                         {toDoList.map((prev, index) => (
-                            <Drag key={prev} index={index} toDo={prev}/>
+                            <Drag key={prev.id} index={index} toDoId={prev.id} toDoText={prev.text}/>
                         ))}
                     {provided.placeholder}
                     </Area>
