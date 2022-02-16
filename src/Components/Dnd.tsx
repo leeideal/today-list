@@ -39,17 +39,37 @@ input{
 }
 `
 
+const Head = styled.div`
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 80px;
+`
+
 const BackBtn = styled.div`
     width: 45px;
     height: 45px;
-    position: fixed;
-    top:15px;
-    right: 15px;
     border-radius: 45px;
     background-color: #E7EAED;
     display: flex;
     justify-content: center;
     align-items: center;
+`
+
+const Day = styled.div`
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+`
+const Name = styled.div`
+    font-size: 32px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 50px;
 `
 
 interface IForm {
@@ -119,16 +139,28 @@ function Dnd() {
         localStorage.removeItem("toDos");
         window.location.reload();
     }
+    const week = ['일', '월', '화', '수', '목', '금', '토'];
     localStorage.setItem("toDos", JSON.stringify(list));
-
     return (
         <>  {/* 시간, 이름, 로그아웃 버튼 들어갈 예정 */}
             <DragDropContext onDragEnd={onDragEnd}>
                 <Wrapper>
-                    <BackBtn onClick={backClick}>
-                        <FontAwesomeIcon icon={faRightFromBracket} />
-                    </BackBtn>
-                    <h1>{userName}</h1>
+                    <Head>
+                        <Day>
+                            <span>
+                                {new Date().getFullYear()}/{new Date().getMonth()}/{new Date().getDate()}({week[new Date().getDay()]})
+                            </span>
+                            <span>
+                                {new Date().toLocaleTimeString()}
+                            </span>
+                        </Day>
+                        <BackBtn onClick={backClick}>
+                            <FontAwesomeIcon icon={faRightFromBracket} />
+                        </BackBtn>
+                    </Head>
+                    <Name>
+                        {userName}'s Today-List
+                    </Name>
                     <Form onSubmit={handleSubmit(onValid)}>
                         <input {...register("toDo", {required:true})} placeholder={"What to do?"} type="text"/>
                     </Form>
