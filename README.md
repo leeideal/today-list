@@ -1,46 +1,26 @@
-# Getting Started with Create React App
+# React를 활용한 Today-list 만들기
+* Today-list는 유사 ToDoApp과 같이 할일을 관리하는 서비스입니다.
+* 다른 ToDoApp들과의 차이점
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  1. 자신이 입력한 내용들을 "드래근앤드롭" 방식을 활용하여, 사용자가 각 일들의 진행도를 지정할 수 있음
+  2. 진행도의 따른 "게이지 바"를 두어, 할일에 전체적인 진행도를 확인 시각적으로 확인 가능
 
-## Available Scripts
+>2022년들어서 공부한 react를 활용하여 작은 개인프로젝트를 만들어보았습니다. 
+>
+>사용 언어는 TypeScript를 선택하였고, React에서 제공하는 다양한 라이브러리를 활용하여 만들어보았습니다.
 
-In the project directory, you can run:
+## Description
+### React-Beautiful-Dnd 활용
+react-beautiful-dnd라이브러리를 활용하여, 기본적인 드래그앤드롭형식의 Today-list를 구성
 
-### `npm start`
+### Localstorage
+웹 어플리케이션에 존재하는 localstorage에 정보를 저장하여, 웹이 꺼져도 내용이 사라지지않고 저장되게 함
+>Node.js를 활용하여, MogoDB에 데이터를 저장하는 방법도 생각해봤지만, 아직 백엔드 분야를 잘 몰라서 localstorage를 선택
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Recoil 활용
+Global state management를 위해서 Recoil를 활용
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Improvements
+1. 메모기능 추가
+2. 날짜별 Today-list 기능 추가(캘린더 기능)
+3. Node.js를 통한 MogoDB와 데이터 연결
