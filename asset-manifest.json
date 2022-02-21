@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/today-list/static/css/main.841d533c.css",
+    "main.js": "/today-list/static/js/main.999b0137.js",
+    "index.html": "/today-list/index.html",
+    "main.841d533c.css.map": "/today-list/static/css/main.841d533c.css.map",
+    "main.999b0137.js.map": "/today-list/static/js/main.999b0137.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.841d533c.css",
+    "static/js/main.999b0137.js"
+  ]
+}
