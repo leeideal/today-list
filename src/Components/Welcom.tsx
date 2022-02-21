@@ -10,13 +10,17 @@ const Title = styled.div`
 `
 
 const Check = styled.div`
-font-weight: 400;
+    font-weight: 400;
     font-size: 32px;
+    display: flex;
+    align-items: center;
     input {
+        margin-top: 10px;
+        margin-left: 10px;
         text-align: center;
         background-color: rgba(256,256,256,0.8);
         border : none;
-        height: 26px;
+        height: 24px;
         border-radius: 5px;
     }
 `
@@ -36,7 +40,8 @@ function Welcome() {
             <form onSubmit={onValid}>
                 <Title>Hello!</Title>
                 <Check>
-                    Who are you? :  <input onChange={onChange} value={name} id="name" required minLength={1} placeholder="이름을 입력해주세요."/>
+                    <div>Write your name : </div>
+                    <input onChange={onChange} value={name} id="name" required minLength={1} placeholder="이름을 입력해주세요."/>
                 </Check>
             </form>
         </div>

@@ -8,6 +8,7 @@ import { toDoState, welcomeName } from "../atoms";
 import Board from "./Board";
 import Delete from "./Delete";
 import Bar from "./Bar";
+import { useState } from "react";
 
 
 const Wrapper = styled.div`
@@ -78,6 +79,7 @@ interface IForm {
 
 function Dnd() {
     const [list, setList] = useRecoilState(toDoState);
+    const [time, setTime] = useState(new Date().toLocaleTimeString());
     const userName = useRecoilValue(welcomeName);
     const {register, handleSubmit, setValue} = useForm<IForm>();
     const onDragEnd = (data : DropResult) => {
@@ -140,18 +142,22 @@ function Dnd() {
         window.location.reload();
     }
     const week = ['일', '월', '화', '수', '목', '금', '토'];
+    const timeSetting = () => {
+        setTime(new Date().toLocaleTimeString())
+    }
+    setInterval(timeSetting, 1000);
     localStorage.setItem("toDos", JSON.stringify(list));
     return (
-        <>  {/* 시간, 이름, 로그아웃 버튼 들어갈 예정 */}
+        <> 
             <DragDropContext onDragEnd={onDragEnd}>
                 <Wrapper>
                     <Head>
                         <Day>
                             <span>
-                                {new Date().getFullYear()}/{new Date().getMonth()}/{new Date().getDate()}({week[new Date().getDay()]})
+                                {new Date().getFullYear()}/{new Date().getMonth()+1}/{new Date().getDate()}({week[new Date().getDay()]})
                             </span>
                             <span>
-                                {new Date().toLocaleTimeString()}
+                                {time}
                             </span>
                         </Day>
                         <BackBtn onClick={backClick}>

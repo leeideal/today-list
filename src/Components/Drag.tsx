@@ -18,7 +18,7 @@ interface IDragabbleCardProps {
     toDoText : string;
   }
 
-function Drag({toDoId, index, toDoText} : IDragabbleCardProps) {
+function Drag({index, toDoText} : IDragabbleCardProps) {
     return (
         <Draggable draggableId={toDoText} index={index}>
         {(provided, snapShot) => (
