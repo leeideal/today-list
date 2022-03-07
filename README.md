@@ -23,4 +23,4 @@ Global state management를 위해서 Recoil를 활용
 ## Improvements
 1. 메모기능 추가
 2. 날짜별 Today-list 기능 추가(캘린더 기능)
-3. Firebase를 통해서 서버와 연결을 해보고, 이후 Node.js를 통한 MogoDB와 데이터 연결
+3. 모바일 화면 지원하기 (현재는 모바일 화면을 지원안함)
